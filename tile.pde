@@ -1,18 +1,34 @@
 class Tile {
   PVector drawPos;
   PVector pos;
-  int bombs;
+  int bombs = 0;
+  int number = 0;
+  boolean covered
   
   Tile(int x, int y) {
-    bombs = int(random(2));
     pos = new PVector(x,y);
   }
   
-  int bombCount() {
-    return bombs;
+  void bombAdd() {
+    bombs += 1;
+  }
+  
+  void numberSet(int n) {
+    number = n;
   }
   
   void render() {
+    textSize(50);
     rect(pos.x*tileSize, pos.y*tileSize, tileSize, tileSize);
+    fill(150);
+    rect(pos.x*tileSize, pos.y*tileSize, tileSize, tileSize);
+    fill(0);
+    if (bombs == 0) {
+      text(number, (pos.x)*tileSize, (pos.y+1)*tileSize);
+    }
+    if (bombs == 1) {
+      rect(tileSize*pos.x+(tileSize/4), tileSize*pos.y+(tileSize/4), tileSize/2, tileSize/2);
+    }
+    
   }
 }
