@@ -3,7 +3,8 @@ class Tile {
   PVector pos;
   int bombs = 0;
   int number = 0;
-  boolean covered
+  boolean covered = true;
+  boolean flagged = false;
   
   Tile(int x, int y) {
     pos = new PVector(x,y);
